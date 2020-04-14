@@ -2,6 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HumaneSociety.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+<<<<<<< HEAD
     <Setting Name="HumanSocietyConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
@@ -9,6 +10,15 @@
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-S8CC850\SQLEXPRESS;Initial Catalog=HumanSociety;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False</Value>
+=======
+    <Setting Name="HumaneSocietyConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=EVANMEADE9CA\SQLEXPRESS01;Initial Catalog=HumaneSociety;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EVANMEADE9CA\SQLEXPRESS01;Initial Catalog=HumaneSociety;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False</Value>
+>>>>>>> f0e1271dec813451f270a66d48b5b6a371786591
     </Setting>
   </Settings>
 </SettingsFile>
