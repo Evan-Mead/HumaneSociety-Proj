@@ -169,10 +169,19 @@ namespace HumaneSociety
             switch (crudOperation)
             {
                 case "create":
-                    var employeeUserCheck = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
-                    if (employeeUserCheck == null)
+                    var checkEmployeeNumber = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
+                    if (checkEmployeeNumber == null)
                     {
+                        var checkEmployeeEmail = db.Employees.Where(e => e.Email == employee.Email).FirstOrDefault()
+                        if (checkEmployeeEmail == null)
+                        {
+                            db.Employees.InsertOnSubmit(employee);
+                            db.SubmitChanges();
+                        }
+                        else
+                        {
 
+                        }
                     }
             }
             throw new NotImplementedException();
