@@ -198,22 +198,18 @@ namespace HumaneSociety
         internal static void AddAnimal(Animal animal)
         {
             
-             var checkAddAnimal = db.Animal.Where(a => a.AddAnimal == animal.Addanimal).FirstOrDefault();
+             var checkAddAnimal = db.Animal.Where(a => a.AddAnimal == animal.Animal).FirstOrDefault();
             
                  db.Animals.InsertOnSubmit(animal);
                  db.SubmitChanges();
 
-
-               
-            
-
-            
         }
 
         internal static Animal GetAnimalByID(int id)
         {
-            Animal animal = db.Animals.Where(a => a.AnimalID == id);
-            return animal;
+            Animal result = new Animal();
+            result = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
+            return result;
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
@@ -243,7 +239,12 @@ namespace HumaneSociety
         // TODO: Animal Multi-Trait Search
         internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
-            ////////
+            bool searchForTrait = true;
+            var animals = db.Animals.ToList();
+            while (searchForTrait == true)
+            {
+
+            }
             throw new NotImplementedException();
         }
          
