@@ -172,7 +172,7 @@ namespace HumaneSociety
                     var checkEmployeeNumber = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
                     if (checkEmployeeNumber == null)
                     {
-                        var checkEmployeeEmail = db.Employees.Where(e => e.Email == employee.Email).FirstOrDefault()
+                        var checkEmployeeEmail = db.Employees.Where(e => e.Email == employee.Email).FirstOrDefault();
                         if (checkEmployeeEmail == null)
                         {
                             db.Employees.InsertOnSubmit(employee);
@@ -180,9 +180,15 @@ namespace HumaneSociety
                         }
                         else
                         {
-
+                            Console.WriteLine("An employee already exists with that data.");
                         }
                     }
+                    break;
+                case "delete":
+                    employee = db.Employees.Where(e => e.FirstName == employee.FirstName && e.LastName == employee.LastName && e.EmployeeNumber == employee.EmployeeNumber).SingleOrDefault();
+                    db.Employees.DeleteOnSubmit(employee);
+                    db.SubmitChanges();
+                    break;
             }
             throw new NotImplementedException();
         }
@@ -211,6 +217,7 @@ namespace HumaneSociety
         // TODO: Animal Multi-Trait Search
         internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
+            ////////
             throw new NotImplementedException();
         }
          
