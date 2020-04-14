@@ -197,12 +197,8 @@ namespace HumaneSociety
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)
         {
-            
-             var checkAddAnimal = db.Animal.Where(a => a.AddAnimal == animal.Animal).FirstOrDefault();
-            
                  db.Animals.InsertOnSubmit(animal);
                  db.SubmitChanges();
-
         }
 
         internal static Animal GetAnimalByID(int id)
@@ -250,8 +246,43 @@ namespace HumaneSociety
                 switch (userInput)
                 {
                     case 1:
-
+                        UserInterface.DisplayUserOptions("Enter an animal category to search by:");
+                        string searchCategory = UserInterface.GetUserInput();
+                        animals = animals.Where(c => c.Category.Name == searchCategory).Select(c => c).ToList();
+                        break;
+                    case 2:
+                        UserInterface.DisplayUserOptions("Enter an animal name to search by:");
+                        string searchName = UserInterface.GetUserInput();
+                        animals = animals.Where(n => n.Name == searchName).Select(n => n).ToList();
+                        break;
+                    case 3:
+                        UserInterface.DisplayUserOptions("Enter an animal age to search by:");
+                        int searchAge = UserInterface.GetIntegerData();
+                        animals = animals.Where(a => a.Age == searchAge).Select(a => a).ToList();
+                        break;
+                    case 4:
+                        UserInterface.DisplayUserOptions("Enter an animal demeanor to search by:");
+                        string searchDemeanor = UserInterface.GetUserInput();
+                        animals = animals.Where(d => d.Demeanor == searchDemeanor).Select(d => d).ToList();
+                        break;
+                    case 5:
+                        bool? searchKidFriendly = UserInterface.GetBitData("Search if an animal is kid friendly:");
+                        animals = animals.Where(k => k.KidFriendly == searchKidFriendly).Select(k => k).ToList();
+                        break;
+                    case 6:
+                        bool? searchPetFriendly = UserInterface.GetBitData("Search if an animal is pet frirndly:");
+                        animals = animals.Where(p => p.PetFriendly == searchPetFriendly).Select(p => p).ToList();
+                        break;
+                    case 7:
+                        UserInterface.DisplayUserOptions("Enter an animal weight to search by:");
+                        int searchWeight = UserInterface.GetIntegerData();
+                        animals = animals.Where(w => w.Weight == searchWeight).Select(w => w).ToList();
+                        break;
+                    default:
+                        Console.WriteLine("Please make a valid selection.");
+                        break;
                 }
+
             }
             //throw new NotImplementedException();
         }
