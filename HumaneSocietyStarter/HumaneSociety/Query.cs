@@ -181,7 +181,7 @@ namespace HumaneSociety
                         }
                         else
                         {
-                            Console.WriteLine("An employee already exists with that data.");
+                            UserInterface.DisplayUserOptions("An employee already exists with that data.");
                         }
                     }
                     break;
@@ -191,7 +191,7 @@ namespace HumaneSociety
                     db.SubmitChanges();
                     break;
             }
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         // TODO: Animal CRUD Operations
@@ -243,9 +243,17 @@ namespace HumaneSociety
             var animals = db.Animals.ToList();
             while (searchForTrait == true)
             {
+                List<string> options = new List<string>()
+                { "Select Update:", "1. Category", "2. Name", "3. Age", "4. Demeanor", "5. Kid friendly", "6. Pet friendly", "7. Weight", "8. Finished", "You will be prompted again for any additional updates." };
+                UserInterface.DisplayUserOptions(options);
+                var userInput = UserInterface.GetIntegerData();
+                switch (userInput)
+                {
+                    case 1:
 
+                }
             }
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
          
         // TODO: Misc Animal Things
