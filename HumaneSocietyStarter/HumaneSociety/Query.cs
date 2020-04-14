@@ -166,6 +166,15 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
+            switch (crudOperation)
+            {
+                case "create":
+                    var employeeUserCheck = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
+                    if (employeeUserCheck == null)
+                    {
+
+                    }
+            }
             throw new NotImplementedException();
         }
 
