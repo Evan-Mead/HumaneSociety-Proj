@@ -297,23 +297,27 @@ namespace HumaneSociety
                     UserInterface.DisplayUserOptions("Input not recognized please try again");
                 }
             }
-            return;
+            return animals;
             //throw new NotImplementedException();
         }
          
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
         {
+
             throw new NotImplementedException();
         }
+
         
         internal static Room GetRoom(int animalId)
         {
+
             throw new NotImplementedException();
         }
         
         internal static int GetDietPlanId(string dietPlanName)
         {
+            
             throw new NotImplementedException();
         }
 
