@@ -189,47 +189,92 @@ namespace HumaneSociety
         }
 
         // TODO: Animal CRUD Operations
-        internal static void AddAnimal(Animal animal)
+        internal static Animal AddAnimal(Animal animal)
         {
             
-             var checkAddAnimal = db.Animal.Where(a => a.AddAnimal == animal.Addanimal).FirstOrDefault();
+            animal = db.Animals.Where(a => a.Animal == animal).FirstOrDefault();
+            return animal;
+           
             
-                 db.Animals.InsertOnSubmit(animal);
-                 db.SubmitChanges();
-
-
-               
+            
             
 
-            
         }
+            
+           
 
         internal static Animal GetAnimalByID(int id)
         {
-            Animal animal = db.Animals.Where(a => a.AnimalID == id);
+            Animal animal = db.Animals.Where(a => a.AnimalID == id).FirstOrDefault();
             return animal;
+            
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
             Animal animal = db.Animals.Where(a => a.AnimalId == animalId);
-            foreach (KeyValuePair<int, string>update in updates)
+            UserEmployee userEmployee = new UserEmployee();
+            int input = UserInterface.GetIntegerData();
+            if (input == 1)
             {
-                switch (update)
-                { 
-                    
-                
-                }
-
-
+                ChangeAnimal(animalId);
+                userEmployee.UpdateAnimal(animal);
+            }
+            else if (input == 2)
+            {
+                ChangeName(animal);
+                userEmployee.UpdateAnimal(animal);
+            }
+            else if (input == 3)
+            {
+                ChangeWeight(animal);
+                userEmployee.UpdateAnimal(animal);
+            }
+            else if (input == 4)
+            {
+                ChangeAge(animal);
+                userEmployee.UpdateAnimal(animal);
+            }
+            else if (input == 5)
+            {
+                ChangeDemeanor(animal);
+                userEmployee.UpdateAnimal(animal);
+            }
+            else if (input == 6)
+            {
+                CheckKidFriendly(animal);
+                userEmployee.UpdateAnimal(animal);
+            }
+            else if (input == 7)
+            {
+                CheckPetFriendly(animal);
+                userEmployee.UpdateAnimal(animal);
+            }
+            else if (input == 8)
+            {
+                ChangeGender(input == 8);
+                userEmployee.UpdateAnimal(animal);
+            }
+            else if (input == 9)
+            {
 
             }
+            
+
+               
+            
+
+            
+
+            
 
             
         }
 
         internal static void RemoveAnimal(Animal animal)
         {
+            animal = db.animalContext.Animals.Where(a => a.animal == animal).FirstOrDefault();
+            animalContext.Animal.Remove(animal);
             db.Animals.DeleteOnSubmit(animal);
             db.SubmitChanges();
         }
