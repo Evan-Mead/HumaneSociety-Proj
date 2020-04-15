@@ -1,1 +1,0 @@
-; INSERT INTO Categories ('Feline'); INSERT INTO Categories ('Fish'); INSERT INTO Categories ('Rodent'); INSERT INTO Categories ('Reptile');
