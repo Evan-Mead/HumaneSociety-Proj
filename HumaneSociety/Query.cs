@@ -237,7 +237,7 @@ namespace HumaneSociety
             }
             else if (input == 5)
             {
-                ChangeDemeanor(animal);
+                Demeanor(animal);
                 userEmployee.UpdateAnimal(animal);
             }
             else if (input == 6)
