@@ -194,7 +194,33 @@ namespace HumaneSociety
                     db.Employees.DeleteOnSubmit(employee);
                     db.SubmitChanges();
                     break;
-                   
+                case "read":
+                    employee = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
+                    List<string> employeeRead = new List<string>()
+                    {
+                        "Employee name: " + employee.FirstName + "" + employee.LastName,
+                        "Employee username: " + employee.UserName,
+                        "Employee number: " + employee.EmployeeNumber,
+                        "Employee e-mail" + employee.Email,
+                    };
+                    UserInterface.DisplayUserOptions(employeeRead);
+                    break;
+                case "update":
+                    employee = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
+                    List<string> employeeUpdate = new List<string>()
+                    {
+                        "Employee name: " + employee.FirstName + "" + employee.LastName,
+                        "Employee username: " + employee.UserName,
+                        "Employee number: " + employee.EmployeeNumber,
+                        "Employee e-mail" + employee.Email,
+                        "Employee password: " + employee.Password,
+                    };
+                    UserInterface.DisplayUserOptions(employeeUpdate);
+                    employee.FirstName = UserInterface.GetStringData("first name", "the employee's");
+                    employee.LastName = UserInterface.GetStringData("last name", "the employee's");
+                    employee.EmployeeNumber = int.Parse(UserInterface.GetStringData("employee number", "the employee's"));
+                    employee.Email = UserInterface.GetStringData("email", "the employee's");
+                    break;
             }
             //throw new NotImplementedException();
         }
