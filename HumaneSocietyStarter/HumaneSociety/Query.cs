@@ -282,8 +282,22 @@ namespace HumaneSociety
                         Console.WriteLine("Please make a valid selection.");
                         break;
                 }
-
+                Console.WriteLine("Would you like to search again?"); ;
+                string input = UserInterface.GetUserInput();
+                if (input.ToLower() == "yes" || input.ToLower() == "y")
+                {
+                    searchForTrait = true;
+                }
+                else if (input.ToLower() == "no" || input.ToLower() == "n")
+                {
+                    searchForTrait = false;
+                }
+                else
+                {
+                    UserInterface.DisplayUserOptions("Input not recognized please try again");
+                }
             }
+            return;
             //throw new NotImplementedException();
         }
          
