@@ -369,8 +369,15 @@ namespace HumaneSociety
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
         {
-
-            throw new NotImplementedException();
+            var categoryID = db.Categories.FirstOrDefault(i => i.Name == categoryName);
+            if (categoryID == null)
+            {
+                Console.WriteLine("Please enter a valid ID.");
+                Console.WriteLine($"Add {categoryID} to database.");
+            }
+            var categoryIDName = db.Categories.Where(c => c.Name == categoryName).Select(i => i.CategoryId).SingleOrDefault();
+            return categoryIDName;
+            //throw new NotImplementedException();
         }
 
         
