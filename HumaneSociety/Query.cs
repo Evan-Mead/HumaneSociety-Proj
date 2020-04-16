@@ -222,7 +222,6 @@ namespace HumaneSociety
                     employee.Email = UserInterface.GetStringData("email", "the employee's");
                     break;
             }
-            //throw new NotImplementedException();
         }
 
         // TODO: Animal CRUD Operations
@@ -363,7 +362,6 @@ namespace HumaneSociety
                 }
             }
             return animals;
-            //throw new NotImplementedException();
         }
          
         // TODO: Misc Animal Things
@@ -377,7 +375,6 @@ namespace HumaneSociety
             }
             var categoryIDName = db.Categories.Where(c => c.Name == categoryName).Select(i => i.CategoryId).SingleOrDefault();
             return categoryIDName;
-            //throw new NotImplementedException();
         }
 
         
@@ -386,7 +383,6 @@ namespace HumaneSociety
             Room room = new Room();
             room = db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
             return room;
-            //throw new NotImplementedException();
         }
         
         internal static int GetDietPlanId(string dietPlanName)
@@ -398,21 +394,37 @@ namespace HumaneSociety
         // TODO: Adoption CRUD Operations
         internal static void Adopt(Animal animal, Client client)
         {
-            throw new NotImplementedException();
+            adoptions = db.adoptions.Where(new Adoption() { AnimalId = animal.AniamlId, ClientId = client.ClientId }).FirstOrDefault();
+            db.Adoption.InsertOnSubmit(animal);
+            db.SubmitChanges();
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
         {
-            throw new NotImplementedException();
+            Adoption adoption = new Adoption();
+            adoption = db.Adoptions.Where(a => a.adoptionStatus == "Adoption pending");
+            return adoption;
         }
 
         internal static void UpdateAdoption(bool isAdopted, Adoption adoption)
         {
-            throw new NotImplementedException();
+            var isAdopted = db.Adoptions.Where(a => a.AnimalId == adoption.AnimalId).SingleOrDefault();
+            if (adoptionStatus == false)
+            {
+                adoptionStatus = "Adoption pending";
+            }
+            else
+            {
+                adoption.Status = isAdopted;
+            }
+            db.Adoptions.InsertOnSubmit(adoption);
+            db.SubmitChanges();
         }
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
+            doption = db.removeAdoption.DeleteOnSubmit.Where(a => a.AnimalId == animalId && a.ClientID == clientId).FirstOrDefault();
+            db.SubmitChanges();
             throw new NotImplementedException();
         }
 
